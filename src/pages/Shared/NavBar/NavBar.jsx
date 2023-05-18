@@ -4,11 +4,12 @@ const NavBar = () => {
     const handleLogOut = ()=>{
 
     }
-    const user='masum';
+    const user='';
     const navItems =
         <>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/all-toy'>All Toys</Link></li>
+            <li><Link to='/blog'>Blog</Link></li>
             {user && <>
                 <li><Link to='/add-toy'>Add Toy</Link></li>
                 <li><Link to='/my-toy'>My Toys</Link></li>
@@ -38,7 +39,7 @@ const NavBar = () => {
                     <>
                     <button onClick={handleLogOut}>LogOut</button>
                 
-                <img title="masum" className="w-10 h-10 rounded-large" src="https://i.ibb.co/ynZtcDw/chef2.jpg" alt="" /> </>:<span>Login</span>
+                <img title="masum" className="w-10 h-10 rounded-large" src="https://i.ibb.co/ynZtcDw/chef2.jpg" alt="" /> </>:<span><Link to='/login'>Login</Link></span>
                 }
 
             </div>
