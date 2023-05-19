@@ -5,19 +5,27 @@ import Blog from "../pages/Blog/Blog";
 import AllToy from "../pages/AllToy/AllToy";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import AddToy from "../pages/AddToy/AddToy";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
             element:<Home></Home>
         },
         {
+            path:'/add-toy',
+            element:<AddToy></AddToy>
+        },
+        {
             path:'/all-toy',
-            element:<AllToy></AllToy>
+            element:<AllToy></AllToy>,
+            loader:()=>fetch('http://localhost:5000/all-toy')
         },
         {
             path:'/blog',
