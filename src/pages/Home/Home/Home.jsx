@@ -16,13 +16,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className='grid grid-cols-3'>
-            <Gallery></Gallery>
-            <Gallery></Gallery>
-            <Gallery></Gallery>
-            <Gallery></Gallery>
-            <Gallery></Gallery>
-            </div>
+          
             <Gallery></Gallery>
             <h2 className="text-5xl text-center my-5">Best selling product category</h2>
             <div className="flex  justify-items-center align-center">

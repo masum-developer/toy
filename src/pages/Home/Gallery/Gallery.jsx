@@ -1,12 +1,23 @@
+import { useEffect, useState } from "react";
+import GalleryImage from "./GalleryImage";
+
 const Gallery = () => {
+    const [galleryImage,setGalleryImage] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/toy-gallery')
+        .then(res=>res.json())
+        .then(data=>setGalleryImage(data))
+    },[])
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <div className="card-body">
-                <h2 className="card-title">Avenger</h2>
-                
-            </div>
-            <figure><img src="https://i.ibb.co/MDWKTVr/marveltwo.webp" alt="toy" /></figure>
+
+        <div className='grid grid-cols-4'>
+            {
+                galleryImage.map(im=><GalleryImage key={im._id} im={im}></GalleryImage>)
+            }
+            
         </div>
+        
     );
 };
 
