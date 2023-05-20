@@ -15,7 +15,8 @@ const ShopCategory = () => {
     }, [activeTab])
     return (
         <div>
-            <h2>Shop by Category</h2>
+            
+            <h2 className="text-5xl text-center my-5">Shop by Category</h2>
             <Tabs selectedIndex={tabIndex} onSelect={(index) => 
                 {
                     setTabIndex(index)
