@@ -1,36 +1,64 @@
 import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
+import SingleCategory from "./SingleCategory";
 
 
 const ShopCategory = () => {
-    const [shop, setShop] = useState([]);
+    const [shops, setShops] = useState([]);
     const [activeTab, setActiveTab] = useState('marvel');
     const [tabIndex, setTabIndex] = useState(0);
     useEffect(() => {
         fetch(`http://localhost:5000/all-toy/${activeTab}`)
             .then(res => res.json())
-            .then(data => setShop(data))
+            .then(data => setShops(data))
     }, [activeTab])
     return (
         <div>
             <h2>Shop by Category</h2>
-            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+            <Tabs selectedIndex={tabIndex} onSelect={(index) => 
+                {
+                    setTabIndex(index)
+                    if(index===0){
+                        setActiveTab('marvel');
+                    }
+                    if(index===1){
+                        setActiveTab('avengers');
+                    }
+                    if(index===2){
+                        setActiveTab('transformers');
+                    }
+                }
+                }>
                 <TabList>
-                    <Tab>Title 1</Tab>
-                    <Tab>Title 2</Tab>
-                    <Tab>Title 2</Tab>
+                    <Tab>Marvel</Tab>
+                    <Tab>Avenger</Tab>
+                    <Tab>Transformers</Tab>
                 </TabList>
                 <TabPanel>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi et velit non libero quam dolor eligendi exercitationem debitis reprehenderit facere ipsa, ex sint! Dolore dicta eligendi magnam distinctio, aut a?</p>
+                <div className="grid md:grid-cols-4">
+                {
+                    shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
+                }
+                </div>
                 </TabPanel>
                 <TabPanel>
-                    <p>masum</p>
+                <div className="grid md:grid-cols-4">
+                {
+                    shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
+                }
+                </div>
                 </TabPanel>
                 <TabPanel>
-                    <p>Tinni</p>
+                <div className="grid md:grid-cols-2">
+                {
+                    shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
+                }
+                </div>
                 </TabPanel>
             </Tabs>
+            
+
         </div>
     );
 };

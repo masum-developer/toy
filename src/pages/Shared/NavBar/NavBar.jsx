@@ -4,10 +4,11 @@ import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavBar = () => {
     
-    const {user} = useContext(AuthContext);
+    const {user,logOut} = useContext(AuthContext);
     console.log(user?.email);
     const handleLogOut = ()=>{
-
+        logOut();
+        
     }
     
     const navItems =
@@ -42,9 +43,9 @@ const NavBar = () => {
             <div className="navbar-end">
                 {user ?
                     <>
-                    <button onClick={handleLogOut}>LogOut</button>
+                    <img title={user?.displayName} className="w-10 h-10 rounded-large" src={user.photoURL} alt="" />                    <button className="btn btn-black ml-3" onClick={handleLogOut}>LogOut</button>
                 
-                <img title="masum" className="w-10 h-10 rounded-large" src="https://i.ibb.co/ynZtcDw/chef2.jpg" alt="" /> </>:<span><Link to='/login'>Login</Link></span>
+                 </>:<Link className="btn btn-black" to='/login'>Login</Link>
                 }
 
             </div>

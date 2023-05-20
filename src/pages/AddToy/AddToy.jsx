@@ -1,8 +1,11 @@
 import { useContext } from "react";
+import Swal from 'sweetalert2'
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const AddToy = () => {
+  useTitle('AddToy');
     const {user} = useContext(AuthContext);
 
     const { register, handleSubmit } = useForm();
@@ -20,27 +23,36 @@ const AddToy = () => {
           .then((res) => res.json())
           .then((result) => {
             console.log(result);
+            if(result.insertedId){
+              Swal.fire({
+                title: 'Success!',
+                text: 'Toy added successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+            }
+            
           });
         console.log(data);
     };
 
     return (
         <div className="w-1/3 mx-auto">
-            <h2 className="text-3xl mb-5">Add Toy</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <h2 className="text-3xl text-center mb-5">Add Toy</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className="border-2 border-black pl-20 py-5 mb-5">
             <input
               className="form-control border-2 border-black"
               {...register("toyPicture")}
               placeholder="picture url"
               type="url"
-              defaultValue="https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600"
+              
             />
                 <input className="form-control border-2 border-black mt-5" {...register("toyName",{ required: true, maxLength: 20 })} 
                 placeholder="Toy Name"
                 />
             
             <br />
-                <select {...register("subCategory")}>
+                <select className="form-control border-2 border-black mt-5" {...register("subCategory")}>
                     <option value="marvel">Marvel</option>
                     <option value="avengers">avengers</option>
                     <option value="transformers">transformers</option>
@@ -67,12 +79,12 @@ const AddToy = () => {
                 />
                 <br />
                 
-                <textarea className="form-control border-2 border-black mt-5"
+                <textarea placeholder="Details" className="form-control border-2 border-black mt-5"
                 {...register("detail", { required: true })}>
                      
                 </textarea>
                 <br />
-                <input className="form-control px-5 py-3 mt-5 bg-green-400" type="submit" value="Add Toy" />
+                <input className="btn px-5 py-3 mt-5 btn-info" type="submit" value="Add Toy" />
                 <br />
                 <br />
             </form>

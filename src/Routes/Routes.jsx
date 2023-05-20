@@ -8,6 +8,9 @@ import Register from "../pages/Register/Register";
 import AddToy from "../pages/AddToy/AddToy";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import MyToy from "../pages/MyToy/MyToy";
+import PrivateRoute from "./PrivateRoute";
+import ToyDetails from "../pages/ToyDetails/ToyDetails";
+import ToyEdit from "../pages/ToyEdit/ToyEdit";
 
 const router = createBrowserRouter([
     {
@@ -21,16 +24,28 @@ const router = createBrowserRouter([
         },
         {
             path:'/add-toy',
-            element:<AddToy></AddToy>
+            element:<PrivateRoute><AddToy></AddToy></PrivateRoute>
         },
         {
             path:'/all-toy',
-            element:<AllToy></AllToy>,
-            loader:()=>fetch('http://localhost:5000/all-toy')
+            element:<AllToy></AllToy>
+            
+        },
+        {
+            path:'/toy/:id',
+            element:<PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
+            loader:({params})=>fetch(`http://localhost:5000/toy/${params.id}`)
+            
+        },
+        {
+            path:'/toy-edit/:id',
+            element:<PrivateRoute><ToyEdit></ToyEdit></PrivateRoute>,
+            loader:({params})=>fetch(`http://localhost:5000/toy-edit/${params.id}`)
+            
         },
         {
             path:'/my-toy',
-            element:<MyToy></MyToy>
+            element:<PrivateRoute><MyToy></MyToy></PrivateRoute>
         },
         {
             path:'/blog',

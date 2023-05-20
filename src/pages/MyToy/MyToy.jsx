@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const MyToy = () => {
+
+    useTitle('MyToy');
     const { user } = useContext(AuthContext)
     const [toys, setToys] = useState([])
-    const [searchText, setSearchText] = useState("");
+    
 
     useEffect(() => {
         fetch(`http://localhost:5000/my-toy/${user?.email}`)
@@ -12,26 +16,31 @@ const MyToy = () => {
             .then(data => setToys(data))
     }, [user])
 
-    const handleSearch = () => {
-        fetch(`http://localhost:5000/toy-name/${searchText}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setToys(data);
-            });
-    };
+
+    const handleDelete = id =>{
+        console.log(id);
+        const proceed = confirm('Are you sure you want to delete');
+        if(proceed){
+            fetch(`http://localhost:5000/toy-delete/${id}`,{
+                method:'DELETE'
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data)
+                if(data.deletedCount>0){
+                    alert('Deleted successfully')
+                    const remaining = toys.filter(toy=>toy._id!==id)
+                    setToys(remaining)
+                }
+            })
+        }
+    }
+
+    
     return (
         <div>
             <h2 className="text-5xl text-center mb-5">My toy</h2>
-            <div className="mb-5 text-center">
-                <input
-                    onChange={(e) => setSearchText(e.target.value)}
-                    type="text"
-                    className="border-2 border-black mr-2 px-3"
-                />
-                <button className="btn btn-info btn-sm" onClick={handleSearch}>Search</button>
-                
-            </div>
+            
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -61,8 +70,8 @@ const MyToy = () => {
                             </td>
                             <td>{toy.quantity}</td>
                             <td>
-                                <button className="btn btn-outline btn-warning mr-2">Update</button>
-                                <button className="btn btn-outline btn-error">Delete</button>
+                                <Link to={`/toy-edit/${toy._id}`} className="btn btn-outline btn-warning mr-2">Edit</Link>
+                                <button onClick={()=>handleDelete(toy._id)} className="btn btn-outline btn-error">Delete</button>
                             </td>
 
                         </tr>

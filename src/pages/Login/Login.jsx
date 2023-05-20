@@ -1,9 +1,17 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
+
 
 const Login = () => {
-    const {loginUser}=useContext(AuthContext);
+    useTitle('login');
+    const [error,setError] = useState('');
+    const {loginUser,googleLogin}=useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/'
     const handleLogin = event =>{
         event.preventDefault();
         const form = event.target;
@@ -15,8 +23,21 @@ const Login = () => {
 
         loginUser(email,password)
         .then(result=>{
+            setError('')
             const user= result.user;
             console.log(user);
+            navigate(from, {replace: true})
+        })
+        .catch(error=>{
+            setError(error.message)
+        })
+    }
+    const handleGoogleLogin = ()=>{
+        googleLogin()
+        .then(result=>{
+            const loggedUser = result.user;
+            console.log(loggedUser)
+            navigate('/')
         })
         .catch(error=>console.log(error))
     }
@@ -48,6 +69,8 @@ const Login = () => {
                         </div>
                         </form>
                         <p>New to My Avenger <Link className="text-green-600 font-bold" to='/register'>Register</Link> </p>
+                        <p className='text-error'>{error}</p>
+                        <button onClick={handleGoogleLogin} className='btn btn-primary mt-3'> <FaGoogle></FaGoogle> Login with Google</button>
 
                     </div>
                 </div>

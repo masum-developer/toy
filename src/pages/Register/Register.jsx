@@ -1,9 +1,14 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaGoogle} from "react-icons/fa";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    useTitle('Register');
+    const [error,setError] = useState('');
+    const {createUser,userProfile,logOut,googleLogin} = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleRegister = event =>{
         event.preventDefault();
         const form = event.target;
@@ -15,8 +20,26 @@ const Register = () => {
 
         createUser(email,password)
         .then(result=>{
-            const user= result.user;
-            console.log(user);
+            console.log(result.user)
+            setError('')
+              userProfile(name,photo)
+              .then(r=>console.log(r))
+              .catch(error=>console.log(error))
+              logOut();
+              navigate('/login');
+              
+        
+        })
+        .catch(error=>{
+            setError(error.message)
+        })
+    }
+    const handleGoogleLogin = ()=>{
+        googleLogin()
+        .then(result=>{
+            const loggedUser = result.user;
+            console.log(loggedUser)
+            navigate('/')
         })
         .catch(error=>console.log(error))
     }
@@ -61,6 +84,8 @@ const Register = () => {
                         </div>
                         </form>
                         <p>Already have an account <Link className="text-green-600 font-bold" to='/login'>Login</Link> </p>
+                        <p className='text-error'>{error}</p>
+            <button onClick={handleGoogleLogin} className='btn btn-primary mt-3'> <FaGoogle></FaGoogle> Login with Google</button>
                         
                     </div>
                 </div>
