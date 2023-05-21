@@ -31,27 +31,40 @@ const MyToy = () => {
 
     const handleDelete = id => {
         console.log(id);
-        const proceed = confirm('Are you sure you want to delete');
-        if (proceed) {
-            fetch(`https://my-avenger-server.vercel.app/toy-delete/${id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    if (data.deletedCount > 0) {
-                       
-                        const remaining = toys.filter(toy => toy._id !== id)
-                        setToys(remaining)
-                        Swal.fire({
-                            title: 'Success',
-                            text: 'Data deleted successfully',
-                            icon: 'success',
-                            confirmButtonText: 'Ok'
-                          })
-                    }
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`https://my-avenger-server.vercel.app/toy-delete/${id}`, {
+                    method: 'DELETE'
                 })
-        }
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                           
+                            const remaining = toys.filter(toy => toy._id !== id)
+                            setToys(remaining)
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                              )
+                        }
+                    })
+              
+            }
+          })
+
     }
 
 
