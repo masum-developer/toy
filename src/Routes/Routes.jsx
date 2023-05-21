@@ -34,13 +34,13 @@ const router = createBrowserRouter([
         {
             path:'/toy/:id',
             element:<PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-            loader:({params})=>fetch(`http://localhost:5000/toy/${params.id}`)
+            loader:({params})=>fetch(`https://my-avenger-server.vercel.app/toy/${params.id}`)
             
         },
         {
             path:'/toy-edit/:id',
             element:<PrivateRoute><ToyEdit></ToyEdit></PrivateRoute>,
-            loader:({params})=>fetch(`http://localhost:5000/toy-edit/${params.id}`)
+            loader:({params})=>fetch(`https://my-avenger-server.vercel.app/toy-edit/${params.id}`)
             
         },
         {

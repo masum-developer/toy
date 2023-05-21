@@ -11,18 +11,18 @@ const MyToy = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-toy/ascending/${user?.email}`)
+        fetch(`https://my-avenger-server.vercel.app/my-toy/ascending/${user?.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [user])
 
     const handleAscending = () => {
-        fetch(`http://localhost:5000/my-toy/ascending/${user?.email}`)
+        fetch(`https://my-avenger-server.vercel.app/my-toy/ascending/${user?.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }
     const handleDescending = () => {
-        fetch(`http://localhost:5000/my-toy/descending/${user?.email}`)
+        fetch(`https://my-avenger-server.vercel.app/my-toy/descending/${user?.email}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }
@@ -32,7 +32,7 @@ const MyToy = () => {
         console.log(id);
         const proceed = confirm('Are you sure you want to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/toy-delete/${id}`, {
+            fetch(`https://my-avenger-server.vercel.app/toy-delete/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

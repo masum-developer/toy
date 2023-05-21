@@ -80,12 +80,12 @@ const Register = () => {
                         </div>
                         <div className="form-control mt-6">
                             
-                            <input type="submit" className="btn bg-green-600 border-0" value="Register" />
+                            <input type="submit" className="btn bg-black border-0" value="Register" />
                         </div>
                         </form>
-                        <p>Already have an account <Link className="text-green-600 font-bold" to='/login'>Login</Link> </p>
+                        <p>Already have an account <Link className="text-info font-bold" to='/login'>Login</Link> </p>
                         <p className='text-error'>{error}</p>
-            <button onClick={handleGoogleLogin} className='btn btn-primary mt-3'> <FaGoogle></FaGoogle> Login with Google</button>
+            <button onClick={handleGoogleLogin} className='btn btn-info mt-3'> <FaGoogle></FaGoogle> - Login with Google</button>
                         
                     </div>
                 </div>

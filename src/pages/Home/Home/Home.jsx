@@ -5,6 +5,7 @@ import Gallery from "../Gallery/Gallery";
 import ShopCategory from "../ShopCategory/ShopCategory";
 import Aos from "aos";
 import 'aos/dist/aos.css';
+import AgeCategory from "../AgeCategory/AgeCategory";
 
 
 
@@ -18,10 +19,11 @@ const Home = () => {
             <Banner></Banner>
           
             <Gallery></Gallery>
-            <h2 className="text-5xl text-center my-5">Best selling product category</h2>
-            <div className="flex  justify-items-center align-center">
+            <AgeCategory></AgeCategory>
+            <h2 className="text-3xl md:text-5xl text-center my-5">Best selling product category</h2>
+            <div className="flex flex-col md:flex-row  justify-items-center align-center ml-10 md:ml-0">
                 <div className="text-white bg-black  p-5 m-5 w-60 h-60" data-aos ="fade-right">
-                    {/* <h1>Box 1</h1> */}
+                    
                     <img className="w-full h-full" src="https://i.ibb.co/wcjTCFL/spiderman-3093340-960-720.jpg" alt="" />
                     <h2 className="text-center">Marvel</h2>
                 </div>

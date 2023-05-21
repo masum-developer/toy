@@ -13,7 +13,7 @@ const AddToy = () => {
         data.sellerName=user.displayName;
         data.sellerEmail=user.email;
         
-        fetch("http://localhost:5000/add-toy", {
+        fetch("https://my-avenger-server.vercel.app/add-toy", {
           method: "POST",
           headers: {
              "Content-Type": "application/json" 

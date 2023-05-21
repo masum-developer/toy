@@ -13,7 +13,7 @@ const ToyEdit = () => {
         const detail = form.detail.value;
         console.log(price,quantity,detail);
         const updatedToy = {price,quantity,detail}
-        fetch(`http://localhost:5000/toy-update/${toy._id}`,{
+        fetch(`https://my-avenger-server.vercel.app/toy-update/${toy._id}`,{
             method:'PATCH',
             headers:{
                 'content-type':'application/json'

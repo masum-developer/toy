@@ -9,7 +9,7 @@ const ShopCategory = () => {
     const [activeTab, setActiveTab] = useState('marvel');
     const [tabIndex, setTabIndex] = useState(0);
     useEffect(() => {
-        fetch(`http://localhost:5000/all-toy/${activeTab}`)
+        fetch(`https://my-avenger-server.vercel.app/all-toy/${activeTab}`)
             .then(res => res.json())
             .then(data => setShops(data))
     }, [activeTab])
@@ -37,21 +37,21 @@ const ShopCategory = () => {
                     <Tab>Transformers</Tab>
                 </TabList>
                 <TabPanel>
-                <div className="grid md:grid-cols-4">
+                <div className="grid md:grid-cols-4 space-y-3">
                 {
                     shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
                 }
                 </div>
                 </TabPanel>
                 <TabPanel>
-                <div className="grid md:grid-cols-4">
+                <div className="grid md:grid-cols-4 space-y-3">
                 {
                     shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
                 }
                 </div>
                 </TabPanel>
                 <TabPanel>
-                <div className="grid md:grid-cols-2">
+                <div className="grid md:grid-cols-2 space-y-3">
                 {
                     shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
                 }

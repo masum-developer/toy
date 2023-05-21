@@ -65,12 +65,12 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             
-                            <input type="submit" className="btn bg-green-600 border-0" value="Login" />
+                            <input type="submit" className="btn bg-black border-0" value="Login" />
                         </div>
                         </form>
-                        <p>New to My Avenger <Link className="text-green-600 font-bold" to='/register'>Register</Link> </p>
+                        <p>New to My Avenger <Link className="text-info font-bold" to='/register'>Register</Link> </p>
                         <p className='text-error'>{error}</p>
-                        <button onClick={handleGoogleLogin} className='btn btn-primary mt-3'> <FaGoogle></FaGoogle> Login with Google</button>
+                        <button onClick={handleGoogleLogin} className='btn btn-info mt-3'> <FaGoogle></FaGoogle> - Login with Google</button>
 
                     </div>
                 </div>

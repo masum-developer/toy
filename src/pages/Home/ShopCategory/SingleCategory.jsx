@@ -1,9 +1,28 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate} from "react-router-dom";
+import Swal from 'sweetalert2'
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const SingleCategory = ({shop}) => {
     const {_id,toyName,toyPicture,price,rating} = shop;
+    const {user} = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const handleViewDetails = () => {
+        if(!user){
+            Swal.fire({
+                title: 'Warning!',
+                text: 'You have to login first',
+                icon: 'success',
+                confirmButtonText: 'Please Login'
+              })
+        }
+       
+          navigate(`/toy/${_id}`);
+    }
     return (
-        <div className="card w-64 bg-base-100 shadow-xl">
+        <div className="card ml-16  md:ml-0 w-64 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
                 <img src={toyPicture} alt="Shoes" className="rounded-xl w-40 h-40 img-fluid" />
             </figure>
@@ -12,7 +31,8 @@ const SingleCategory = ({shop}) => {
                 <p>Price: {price}</p>
                 <p>Rating: {rating}</p>
                 <div className="card-actions">
-                    <Link to={`/toy/${_id}`} className="btn btn-primary">View Details</Link>
+                 
+                    <button className="btn bg-black" onClick={handleViewDetails}>View Details</button>
                 </div>
             </div>
         </div>
