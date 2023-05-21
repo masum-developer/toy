@@ -26,3 +26,4 @@ A list of feature used within the project:
 Icon -> [React Icon](https://react-icons.github.io/react-icons/)
 
 Image -> [Imgbb](https://imgbb.com/)
+Tabs ->[React-tabs](https://www.npmjs.com/package/react-tabs)

@@ -39,20 +39,20 @@ const AddToy = () => {
     return (
         <div className="w-1/3 mx-auto">
             <h2 className="text-3xl text-center mb-5">Add Toy</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="border-2 border-black pl-20 py-5 mb-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="border-4 border-black pl-20 py-5 mb-5">
             <input
-              className="form-control border-2 border-black"
+              className="form-control border-2 px-3 py-2 border-black"
               {...register("toyPicture")}
               placeholder="picture url"
               type="url"
               
             />
-                <input className="form-control border-2 border-black mt-5" {...register("toyName",{ required: true, maxLength: 20 })} 
+                <input className="form-control border-2 px-3 py-2 border-black mt-5" {...register("toyName",{ required: true, maxLength: 20 })} 
                 placeholder="Toy Name"
                 />
             
             <br />
-                <select className="form-control border-2 border-black mt-5" {...register("subCategory")}>
+                <select className="form-control border-2 px-3 py-2 border-black mt-5" {...register("subCategory")}>
                     <option value="marvel">Marvel</option>
                     <option value="avengers">avengers</option>
                     <option value="transformers">transformers</option>
@@ -60,31 +60,31 @@ const AddToy = () => {
                     starwars
                 </select>
                 <br />
-                <input className="form-control border-2 border-black mt-5"
+                <input className="form-control border-2 px-3 py-2 border-black mt-5"
                 {...register("price", { required: true })}
                 placeholder="price"
                 type="number"
                 />
                 <br />
-                <input className="form-control border-2 border-black mt-5"
+                <input className="form-control border-2 px-3 py-2 border-black mt-5"
                 {...register("rating", { required: true })}
                 placeholder="rating"
                 type="number"
                 />
                 <br />
-                <input className="form-control border-2 border-black mt-5"
+                <input className="form-control border-2 px-3 py-2 border-black mt-5"
                 {...register("quantity", { required: true })}
                 placeholder="quantity"
                 type="number"
                 />
                 <br />
                 
-                <textarea placeholder="Details" className="form-control border-2 border-black mt-5"
+                <textarea placeholder="Details" className="form-control px-3 py-2 border-2 border-black mt-5"
                 {...register("detail", { required: true })}>
                      
                 </textarea>
                 <br />
-                <input className="btn px-5 py-3 mt-5 btn-info" type="submit" value="Add Toy" />
+                <input className="btn px-10 py-3 mt-5 btn-black" type="submit" value="Add Toy" />
                 <br />
                 <br />
             </form>

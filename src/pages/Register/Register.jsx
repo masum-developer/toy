@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaGoogle} from "react-icons/fa";
 import useTitle from "../../hooks/useTitle";
+import Swal from 'sweetalert2'
 
 const Register = () => {
     useTitle('Register');
@@ -26,6 +27,14 @@ const Register = () => {
               .then(r=>console.log(r))
               .catch(error=>console.log(error))
               logOut();
+              
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Register done',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+            
               navigate('/login');
               
         

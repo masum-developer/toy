@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
+import Swal from 'sweetalert2'
 
 const MyToy = () => {
 
@@ -39,9 +40,15 @@ const MyToy = () => {
                 .then(data => {
                     console.log(data)
                     if (data.deletedCount > 0) {
-                        alert('Deleted successfully')
+                       
                         const remaining = toys.filter(toy => toy._id !== id)
                         setToys(remaining)
+                        Swal.fire({
+                            title: 'Success',
+                            text: 'Data deleted successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                          })
                     }
                 })
         }

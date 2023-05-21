@@ -16,7 +16,7 @@ const ShopCategory = () => {
     return (
         <div>
             
-            <h2 className="text-5xl text-center my-5">Shop by Category</h2>
+            <h2 className="text-3xl md:text-5xl text-center my-5">Shop by Category</h2>
             <Tabs selectedIndex={tabIndex} onSelect={(index) => 
                 {
                     setTabIndex(index)
@@ -39,21 +39,21 @@ const ShopCategory = () => {
                 <TabPanel>
                 <div className="grid md:grid-cols-4 space-y-3">
                 {
-                    shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
+                   shops && shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
                 }
                 </div>
                 </TabPanel>
                 <TabPanel>
                 <div className="grid md:grid-cols-4 space-y-3">
                 {
-                    shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
+                   shops && shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
                 }
                 </div>
                 </TabPanel>
                 <TabPanel>
                 <div className="grid md:grid-cols-2 space-y-3">
                 {
-                    shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
+                  shops && shops.map(shop=><SingleCategory shop={shop} key={shop._id}></SingleCategory>)
                 }
                 </div>
                 </TabPanel>

@@ -1,6 +1,8 @@
+import useTitle from "../../hooks/useTitle";
 
 
 const Blog = () => {
+    useTitle('Blog');
     return (
         <div>
             <h2 className="text-5xl text-center mb-10">Blog</h2>
@@ -43,15 +45,11 @@ const Blog = () => {
                 <p>
                     Express.js is a popular and lightweight web application framework for Node.js. Express.js is known for its simplicity, flexibility and allowing developers to quickly create server-side applications.
 
-                    
-
                     Express.js provides an easy and flexible routing mechanism that allows developers to define routes for handling incoming HTTP requests. It supports various HTTP methods like GET, POST, PUT, DELETE, etc.
 
-                    Middleware functions in Express.js are the building blocks of handling requests and responses. They can be used to perform tasks such as authentication, logging, error handling, parsing request bodies, and more. Middleware functions are executed sequentially, and they can modify the request or response objects before passing them to the next middleware or route handler.
+                    Middleware functions in Express.js are the building blocks of handling requests and responses. They can be used to perform tasks such as authentication, logging, error handling, parsing request bodies and more. Middleware functions are executed sequentially and they can modify the request or response objects before passing them to the next middleware or route handler.
 
-                    
-
-                    Express.js enables serving static files, such as HTML, CSS, JavaScript, and images, through its built-in middleware. This feature simplifies the delivery of static assets to the client.
+                    Express.js enables serving static files, such as HTML, CSS, JavaScript, and images through its built-in middleware. This feature simplifies the delivery of static assets to the client.
 
                     Express.js provides mechanisms for handling errors and exceptions. Developers can define error-handling middleware to catch and process errors that occur during request processing.
 
@@ -62,8 +60,7 @@ const Blog = () => {
 
                     Nest.js is a progressive  Node.js framework for building efficient, scalable, and maintainable server-side applications. It is built on top of Express.js.
 
-
-                    Modular and Dependency Injection: Nest.js promotes a modular architecture, allowing developers to organize their code into reusable modules that encapsulate related functionality. It also leverages dependency injection and enabling the easy management and injection of dependencies throughout the application.
+                    Nest.js promotes a modular architecture, allowing developers to organize their code into reusable modules that encapsulate related functionality.
 
                     Nest.js utilizes decorators and metadata to define and configure various application components such as controllers, providers, middleware, and routes. This approach simplifies the code structure and provides a declarative way of defining the applications behavior.
 
@@ -74,22 +71,18 @@ const Blog = () => {
                 <h4 className="text-2xl mb-3">What is MongoDB aggregate and how does it work?</h4>
                 <p>
 
-                    In MongoDB, the aggregate operation is a powerful and flexible way to process and analyze data within a collection. It allows you to perform complex operations and transformations on the data, such as filtering, grouping, sorting, joining, and aggregating results. The aggregate operation operates on a collection and returns the computed results based on the specified pipeline stages.
+                    In MongoDB, the aggregate operation is a powerful and flexible way to process and analyze data within a collection. It allows you to perform complex operations and transformations on the data, such as filtering, grouping, sorting and joining.
 
                     The aggregate operation in MongoDB follows the concept of a pipeline, which consists of a sequence of stages that are applied to the data. Each stage performs a specific operation on the data and passes the results to the next stage in the pipeline. The output of the previous stage serves as the input for the next stage.
 
-                    Here are the basic components and concepts involved in the MongoDB aggregate operation:
-
-                    Pipeline Stages: A pipeline stage represents a specific operation that is applied to the data. MongoDB provides various pipeline stages, including:
+                    A pipeline stage represents a specific operation that is applied to the data. MongoDB provides various pipeline stages, including:
 
                     $match: Filters the documents based on specified criteria, similar to the find operation.
                     $group: Groups documents based on specified keys and performs aggregations within each group.
                     $sort: Sorts the documents based on specified fields.
                     $project: Shapes the documents, allowing you to include, exclude, or modify specific fields.
                     $limit and $skip: Controls the number of documents returned and allows for pagination.
-                    $lookup: Performs a left outer join with another collection, allowing you to combine data from multiple collections.
-                    These are just a few examples of the available stages. MongoDB offers many more stages to handle various data manipulation and aggregation scenarios.
-
+                
                 </p>
             </div>
         </div>

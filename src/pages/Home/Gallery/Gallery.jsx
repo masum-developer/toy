@@ -11,10 +11,10 @@ const Gallery = () => {
     },[])
     return (
         <div>
-            <h2 className="text-5xl text-center my-5">Gallery</h2>
+            <h2 className="text-3xl md:text-5xl text-center my-5">Gallery</h2>
         <div className='grid sm:grid-cols-1 lg:grid-cols-4'>
             {
-                galleryImage.map(im=><GalleryImage key={im._id} im={im}></GalleryImage>)
+                galleryImage && galleryImage.map(im=><GalleryImage key={im._id} im={im}></GalleryImage>)
             }
             
         </div>

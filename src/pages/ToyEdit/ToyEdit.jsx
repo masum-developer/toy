@@ -1,10 +1,12 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
+import Swal from 'sweetalert2'
 
 
 const ToyEdit = () => {
     useTitle('EditToy');
     const toy = useLoaderData();
+    const navigate = useNavigate('/')
     const handleUpdate = event =>{
         event.preventDefault();
         const form = event.target;
@@ -24,7 +26,13 @@ const ToyEdit = () => {
         .then(data=>{
             console.log(data)
             if(data.modifiedCount>0){
-                alert('Data updated successfully');
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Update done',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+                  navigate('/my-toy')
             }
         })
     }
