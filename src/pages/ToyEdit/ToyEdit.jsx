@@ -54,16 +54,16 @@ const ToyEdit = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Price</span>
+                                <span className="label-text">Quantity</span>
                             </label>
                             <input type="number" name="quantity" placeholder="Quantity" defaultValue={toy?.quantity} className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Price</span>
+                                <span className="label-text">Details</span>
                             </label>
                             
-                            <textarea className="border-2" name="detail" id="" cols="30" rows="10" defaultValue={toy?.detail}></textarea>
+                            <textarea className="border-2 p-3" name="detail" id="" cols="30" rows="10" defaultValue={toy?.detail}></textarea>
                         </div>
                         
                         <div className="form-control mt-6">
